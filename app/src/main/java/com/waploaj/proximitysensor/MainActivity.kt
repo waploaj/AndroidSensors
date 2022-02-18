@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity(),SensorEventListener {
 
     override fun onResume() {
         super.onResume()
-        sensorManger.registerListener(this, proximitSensor, SensorManager.SENSOR_DELAY_NORMAL)
+        if (sensorManger.getDefaultSensor(Sensor.TYPE_PROXIMITY) != null) {
+            sensorManger.registerListener(this, proximitSensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
     }
 
     override fun onPause() {
