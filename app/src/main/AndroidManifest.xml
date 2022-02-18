@@ -8,6 +8,9 @@
     <uses-feature
         android:name="android.hardware.sensor.stepcounter"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.light"
+        android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -16,20 +19,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProximitySensor">
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
         <activity
             android:name=".MotionStepCounter"
-            android:exported="true" >
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LightSensor"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
