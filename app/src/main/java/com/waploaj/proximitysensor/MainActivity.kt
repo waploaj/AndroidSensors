@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(),SensorEventListener {
     override fun onPause() {
         super.onPause()
         if (isAsensorON == true){
-            sensorManger.unregisterListener(this)
+            sensorManger.unregisterListener(this,proximitSensor)
         }
     }
 
