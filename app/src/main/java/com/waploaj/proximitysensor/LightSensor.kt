@@ -20,6 +20,7 @@ class LightSensor : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_light_sensor)
         txtLight = findViewById(R.id.txtLight)
 
+        //call sensorManger for getting sensorService and default sensor available
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         if (sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null){
             isLightSensorOn = true
@@ -30,6 +31,7 @@ class LightSensor : AppCompatActivity(), SensorEventListener {
 
     }
 
+    //override a method on sensor when data is change to update to textview
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0!!.sensor == lightSensor){
             txtLight.setText("the value is ${p0!!.values[0]}")
@@ -40,6 +42,7 @@ class LightSensor : AppCompatActivity(), SensorEventListener {
 
     }
 
+    //unregister a sensor to stop listen on changes
     override fun onPause() {
         super.onPause()
         if (isLightSensorOn == true){
@@ -47,6 +50,7 @@ class LightSensor : AppCompatActivity(), SensorEventListener {
         }
     }
 
+    //To start register a sensor when listen to changes
     override fun onResume() {
         super.onResume()
         if (isLightSensorOn == true){
