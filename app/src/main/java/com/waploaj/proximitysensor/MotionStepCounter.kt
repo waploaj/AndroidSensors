@@ -34,7 +34,7 @@ class MotionStepCounter : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
