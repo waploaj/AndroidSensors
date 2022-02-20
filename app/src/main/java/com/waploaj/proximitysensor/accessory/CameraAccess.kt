@@ -1,8 +1,11 @@
 package com.waploaj.proximitysensor.accessory
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -12,6 +15,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.waploaj.proximitysensor.R
 import java.io.File
@@ -40,7 +45,11 @@ class CameraAccess : AppCompatActivity() {
 
 
         //Request for camera permission
-        //TODO("Implement  check for camera permission")
+        if (ContextCompat.checkSelfPermission(
+                applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),111)
+        }
+
         //set a listener on capture image
         buton.setOnClickListener {
             val picha = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
