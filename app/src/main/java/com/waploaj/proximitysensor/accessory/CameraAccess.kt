@@ -43,11 +43,18 @@ class CameraAccess : AppCompatActivity() {
         btnVideoCapt = findViewById(R.id.btnVideoCapt)
         imageView = findViewById(R.id.camera_preview)
 
+        buton.isEnabled = false
+        btnVideoCapt.isEnabled = false
+        btnUpload.isEnabled = false
 
         //Request for camera permission
         if (ContextCompat.checkSelfPermission(
                 applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),111)
+        }else{
+            buton.isEnabled = true
+            btnUpload.isEnabled = true
+            btnVideoCapt.isEnabled = true
         }
 
         //set a listener on capture image
@@ -100,7 +107,7 @@ class CameraAccess : AppCompatActivity() {
     private val getResul = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult())
     {
-        if (it.resultCode == Activity.RESULT_OK){
+        if (it.resultCode == 111){
             val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
             imageView.setImageBitmap(takenImage)
         }else{
@@ -116,7 +123,7 @@ class CameraAccess : AppCompatActivity() {
     //Register activity for video capture start and receive result on callback activity
     val getVideoCapture = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()){
-        if (it.resultCode == Activity.RESULT_OK){
+        if (it.resultCode == 111){
             val takenVideo = BitmapFactory.decodeFile(videoFile.absolutePath)
             imageView.setImageBitmap(takenVideo)
         }
