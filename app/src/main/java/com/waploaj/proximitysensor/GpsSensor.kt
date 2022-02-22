@@ -1,12 +1,12 @@
 package com.waploaj.proximitysensor
 
 import android.Manifest
-import android.annotation.SuppressLint
+import android.content.ContentResolver
 import android.content.pm.PackageManager
-import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -17,6 +17,7 @@ class GpsSensor : AppCompatActivity() {
     private lateinit var txtLongitude:TextView
     private lateinit var txtLatitude:TextView
     private var isGpsSensorOn = false
+    private var deviceId:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,11 @@ class GpsSensor : AppCompatActivity() {
         locationManger = getSystemService(LOCATION_SERVICE) as LocationManager
         txtLatitude = findViewById(R.id.latitude)
         txtLongitude = findViewById(R.id.longitude)
+        var txtDevice = findViewById<TextView>(R.id.device)
+
+        //Get the device unique Id
+        deviceId = Settings.Secure.getString(this.contentResolver,Settings.Secure.ANDROID_ID)
+        txtDevice.setText("the deviceId is ${deviceId}")
 
         //Check and request gps permission on device
         if (ContextCompat.checkSelfPermission(
@@ -38,7 +44,7 @@ class GpsSensor : AppCompatActivity() {
         }
 
         if (isGpsSensorOn == true){
-            //Requst location on update take distancebtn, timeinterval and listener
+            //Requst location on update takes provider, distancebtn, timeinterval and listener
             locationManger.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
                 1000.toLong(),
