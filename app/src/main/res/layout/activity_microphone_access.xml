@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".accessory.MicrophoneAccess">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <TextView
+      android:id="@+id/txtMicrophone"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="TextView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/play"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="13dp"
+      android:layout_marginTop="1dp"
+      android:layout_marginEnd="2dp"
+      android:text="Stop"
+      app:layout_constraintEnd_toStartOf="@+id/pause"
+      app:layout_constraintHorizontal_chainStyle="spread_inside"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/pause" />
+
+  <Button
+      android:id="@+id/pause"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Play"
+      app:layout_constraintBaseline_toBaselineOf="@+id/record"
+      app:layout_constraintEnd_toStartOf="@+id/record"
+      app:layout_constraintStart_toEndOf="@+id/play" />
+
+  <Button
+      android:id="@+id/record"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="28dp"
+      android:layout_marginBottom="326dp"
+      android:text="Record"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/pause" />
+</androidx.constraintlayout.widget.ConstraintLayout>

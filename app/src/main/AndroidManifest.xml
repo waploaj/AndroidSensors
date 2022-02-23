@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.waploaj.proximitysensor" >
+    package="com.waploaj.proximitysensor">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature
         android:name="android.hardware.sensor.proximityr"
@@ -15,11 +20,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-feature
+        android:name="android.hardware.sensor.ambient_temperature"
+        android:required="true" />
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22"/>
 
     <application
         android:allowBackup="true"
@@ -27,16 +33,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProximitySensor" >
+        android:theme="@style/Theme.ProximitySensor"
+        android:requestLegacyExternalStorage="true">
+
         <activity
-            android:name=".accessory.MicrophoneAccess"
+            android:name=".TemperatureSensor"
+            android:exported="true" />
+        <activity
+            android:name=".accessory.CameraAccess"
+            android:exported="true" />
+        <activity
+            android:name=".GpsSensor"
             android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.waploaj.proximitysensor.accessory"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
@@ -52,8 +66,8 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".accessory.CameraAccess"
-            android:exported="true" >
+            android:name=".accessory.MicrophoneAccess"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
