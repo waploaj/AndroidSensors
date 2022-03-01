@@ -34,7 +34,6 @@ class Nfc : AppCompatActivity(), NfcAdapter.CreateNdefMessageCallback {
     }
 
     override fun createNdefMessage(event: NfcEvent?): NdefMessage {
-        TODO("Not yet implemented")
         val text = "Beam me up Android !\n\n" +
                     "Beam time" + System.currentTimeMillis()
         return NdefMessage(
