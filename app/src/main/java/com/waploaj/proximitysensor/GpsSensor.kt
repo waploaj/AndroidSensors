@@ -54,8 +54,11 @@ class GpsSensor : AppCompatActivity() {
                 if (locationManger != null){
                     //Get the lastKnownLocation
                     val location = locationManger.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                    val mahali = locationManger.getProviders(true)
+                    var textProvider = findViewById<TextView>(R.id.provider)
                     txtLatitude.setText("${location!!.latitude} latiude")
                     txtLongitude.setText("${location!!.longitude} longitude")
+                    textProvider.text = mahali.toString()
                 }
             }
 
