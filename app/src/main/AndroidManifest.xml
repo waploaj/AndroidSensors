@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.waploaj.proximitysensor" >
+    package="com.waploaj.proximitysensor">
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -11,7 +11,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <uses-feature
         android:name="android.hardware.sensor.proximityr"
         android:required="true" />
@@ -24,6 +26,9 @@
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false"/>
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.NFC" />
@@ -40,14 +45,20 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProximitySensor" >
+        android:theme="@style/Theme.ProximitySensor">
         <activity
             android:name=".nfc.Nfc"
-            android:exported="true" >
+            android:exported="true" />
+        <activity
+            android:name=".bluetooth.BluetoothActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
@@ -71,7 +82,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.waploaj.proximitysensor.accessory"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
@@ -89,7 +100,6 @@
         <activity
             android:name=".accessory.MicrophoneAccess"
             android:exported="true" />
-
     </application>
 
 </manifest>
