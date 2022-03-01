@@ -35,4 +35,14 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/longitude"
         app:layout_constraintTop_toBottomOf="@+id/longitude" />
+
+    <TextView
+        android:id="@+id/provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="1dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/device"
+        app:layout_constraintTop_toBottomOf="@+id/device" />
 </androidx.constraintlayout.widget.ConstraintLayout>
