@@ -8,22 +8,16 @@
     tools:context=".bluetooth.BluetoothActivity"
     tools:visibility="visible">
 
-    <ToggleButton
-        android:id="@+id/toogleBtn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginBottom="759dp"
-        android:textOff="@string/bluetoothOff"
-        android:textOn="@string/bluetoothOn" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toogleBtn"
-        android:tooltipText="@string/hello_world" />
+        android:layout_height="match_parent" >
+
+        <ToggleButton
+            android:id="@+id/toogleBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ListView>
 
 </RelativeLayout>
